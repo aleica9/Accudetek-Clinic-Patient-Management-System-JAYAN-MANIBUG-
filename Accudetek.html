@@ -1,19 +1,27 @@
 <html>
-
 <head>
-    <title>Accudetek Health & Diagnostics - Login</title>
-
-
+    
+    <title>Accudetek Health & Diagnostics - Login & Dashboard</title>
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;;
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
 
-        .main {
+        body {
+            background-color: #003b36;
+            color: #243c3b;
+            min-height: 100vh;
+        }
+
+
+        .login-wrapper {
             display: flex;
             width: 100%;
             min-height: 650px;
@@ -23,6 +31,7 @@
         .left {
             width: 57%;
             background-color: white;
+            padding: 20px;
         }
 
 
@@ -31,70 +40,70 @@
             background-color: #006b6b;
             color: white;
             padding: 30px;
-            box-sizing: border-box;
         }
 
 
-        /* Fixed Medical Team Image Sizing */
-        .clinic-image-container {
-          width: 100%;
-          height: 52%;
-          overflow: hidden;
-    }
+        .clinic-image {
+            width: 100%;
+            height: 52%;
+            object-fit: cover;
+            border-radius: 4px;
+        }
 
 
         .map {
             width: 100%;
             height: 180px;
             object-fit: cover;
+            border-radius: 4px;
+            margin-top: 10px;
         }
 
 
         .visit {
             text-align: center;
             color: #008080;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: bold;
+            margin: 15px 0;
         }
 
 
-        .logo {
-            text-align: center;
-            font-size: 30px;
-            font-weight: bold;
-        }
-
-
-        .logo span {
-            color: hsl(345, 14%, 95%);
+        .brand-logo {
+            max-width: 120px;
+            height: auto;
+            display: block;
+            margin: 0 auto 10px auto;
         }
 
 
         .tagline {
             text-align: center;
-            font-size: 25px;
+            font-size: 22px;
             color: #10a6a6;
+            margin-bottom: 20px;
         }
 
 
         .buttons {
             text-align: center;
-            margin-top: 25px;
+            margin-top: 15px;
         }
 
 
         .buttons input {
-            width: 160px;
+            width: 180px;
             padding: 10px;
             margin: 5px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            font-weight: bold;
         }
 
 
         .service {
-            background-color: red;
+            background-color: #d9534f;
             color: white;
         }
 
@@ -107,9 +116,16 @@
 
         .login-box {
             background-color: #8aa9a9;
-            padding: 15px;
+            padding: 20px;
             margin-top: 20px;
             border-radius: 5px;
+        }
+
+
+        .login-box label {
+            font-size: 13px;
+            font-weight: bold;
+            color: #003b36;
         }
 
 
@@ -117,7 +133,6 @@
         .login-box input[type="password"] {
             width: 100%;
             padding: 10px;
-            box-sizing: border-box;
             margin-top: 5px;
             margin-bottom: 15px;
             border: none;
@@ -129,6 +144,8 @@
             width: 100%;
             padding: 10px;
             background-color: #d8df65;
+            color: #3f4b00;
+            font-weight: bold;
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -136,8 +153,14 @@
 
 
         .forgot {
-            color: black;
+            color: #003b36;
             font-size: 12px;
+            text-decoration: none;
+        }
+
+
+        .forgot:hover {
+            text-decoration: underline;
         }
 
 
@@ -145,256 +168,551 @@
             display: flex;
             background-color: #075b5b;
             color: white;
-            padding: 15px;
+            padding: 20px;
             font-size: 12px;
+            gap: 20px;
         }
 
 
         footer div {
             width: 25%;
-            padding: 5px;
+        }
+
+
+        footer h2, footer h3 {
+            margin-bottom: 8px;
+        }
+
+
+        /* DASHBOARD STYLES */
+        .dashboard-container {
+            display: none;
+            min-height: 100vh;
+        }
+       
+        .app {
+            display: flex;
+            width: 100vw;
+            min-height: 100vh;
+        }
+
+
+        .sidebar {
+            width: 210px;
+            background-color: #7b9f9e;
+            padding: 15px 12px;
+            flex-shrink: 0;
+        }
+
+
+        .brand h1 {
+            font-size: 18px;
+            color: #003b36;
+            font-weight: bold;
+            line-height: 1.1;
+        }
+
+
+        .brand p {
+            font-size: 11px;
+            color: #003b36;
+            margin-top: 2px;
+            margin-bottom: 25px;
+        }
+
+
+        .nav-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            background: transparent;
+            border: none;
+            color: #003b36;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: left;
+            width: 100%;
+        }
+
+
+        .nav-btn i {
+            width: 16px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+
+        .nav-btn.active, .nav-btn:hover {
+            background-color: #ffffff;
+            color: #003b36;
+        }
+
+
+        .dashboard-main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+
+
+        .topbar {
+            background-color: #7b9f9e;
+            height: 48px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 0 20px;
+            gap: 15px;
+            border-left: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+
+        .topbar select {
+            background-color: #ffffff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            color: #555;
+            cursor: pointer;
+        }
+
+
+        .admin-profile {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #003b36;
+        }
+
+
+        .admin-avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            object-fit: cover;
+            background-color: #7b9f9e;
+        }
+
+
+        .content {
+            padding: 20px;
+            background-color: #003b36;
+            flex: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+
+        .page-title {
+            color: #c8d356;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 4px;
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+        .card h2 {
+            font-size: 32px;
+            color: #243c3b;
+            font-weight: bold;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+
+        .card p {
+            font-size: 12px;
+            color: #7b8c8b;
+        }
+
+
+        .card-icon {
+            background-color: #dce475;
+            color: #3f4b00;
+            width: 40px;
+            height: 40px;
+            border-radius: 6px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+        }
+
+
+        .tables-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+
+        .panel {
+            background-color: #ffffff;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+
+        .panel-header {
+            padding: 12px 16px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #243c3b;
+            border-bottom: 1px solid #e4ebea;
+        }
+
+
+        .dashboard-container table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11px;
+        }
+
+
+        .dashboard-container th,
+        .dashboard-container td {
+            padding: 10px 16px;
+            text-align: left;
+            border-bottom: 1px solid #f0f4f3;
+        }
+
+
+        .dashboard-container th {
+            color: #7b8c8b;
+            font-weight: normal;
+        }
+
+
+        .dashboard-container td {
+            color: #243c3b;
+        }
+
+
+        .dashboard-container tr:last-child td {
+            border-bottom: none;
         }
     </style>
 </head>
-
-
 <body>
 
 
-    <div class="main">
-
-
-        <!-- LEFT SIDE -->
-        <div class="left">
-
-
-            <img src="3.png" class="clinic-image">
-
-
-            <p class="visit">
-                You can visit our clinic here.
-            </p>
-
-
-            <img src="map.jpg" class="map">
-
-
-        </div>
-
-
-
-
-        <!-- RIGHT SIDE -->
-         <div class="right">
-         <!-- INSERT THE LOGO IMAGE HERE -->
-          <div class="logo-image-container">
-        <img src="acl.jpg" alt="Accudetek Health & Diagnostics Logo" class="brand-logo">
-    </div>
-
-
-    <p class="tagline">
-        PASYENTE ANG UNA.<br>
-        <b>MAAGAP NA RESULTA.</b>
-    </p>
-
-
-            <!-- WEBSITE BUTTONS -->
-            <div class="buttons">
-
-
-                <input type="button"
-                       value="Our Services"
-                       class="service"
-                       onclick="ourServices()">
-
-
-                <br>
-
-
-                <input type="button"
-                       value="Book Appointment"
-                       class="appointment"
-                       onclick="bookAppointment()">
-
-
+    <!-- LOGIN PAGE CONTAINER -->
+    <div id="login-page">
+        <div class="login-wrapper">
+            <!-- LEFT SIDE -->
+            <div class="left">
+                <img src="3.jpg" alt="Clinic Team" class="clinic-image">
+                <p class="visit">You can visit our clinic here.</p>
+                <img src="map.jpg" alt="Location Map" class="map">
             </div>
 
 
+            <!-- RIGHT SIDE -->
+            <div class="right">
+                <div class="logo-image-container">
+                    <img src="acl.jpg" alt="Accudetek Health & Diagnostics Logo" class="brand-logo">
+                </div>
 
 
-            <!-- LOGIN FORM -->
-            <div class="login-box">
+                <p class="tagline">
+                    PASYENTE ANG UNA.<br>
+                    <b>MAAGAP NA RESULTA.</b>
+                </p>
 
 
-                <form>
+                <!-- WEBSITE BUTTONS -->
+                <div class="buttons">
+                    <input type="button" value="Our Services" class="service" onclick="ourServices()">
+                    <br>
+                    <input type="button" value="Book Appointment" class="appointment" onclick="bookAppointment()">
+                </div>
 
 
-                    <label>Email</label>
+                <!-- LOGIN FORM -->
+                <div class="login-box">
+                    <form onsubmit="event.preventDefault(); signIn();">
+                        <label>Email</label>
+                        <input type="email" id="email" placeholder="Enter email">
+                       
+                        <label>Password</label>
+                        <input type="password" id="password" placeholder="Enter password">
 
 
-                    <input type="email"
-                           id="email"
-                           placeholder="Enter email">
+                        <input type="button" value="Sign In" class="signin" onclick="signIn()">
 
 
-
-
-                    <label>Password</label>
-
-
-                    <input type="password"
-                           id="password"
-                           placeholder="Enter password">
-
-
-
-
-                    <input type="button"
-                           value="Sign In"
-                           class="signin"
-                           onclick="signIn()">
-
-
-                    <br><br>
-
-
-                    <a href="#" class="forgot">
-                        Forgot password?
-                    </a>
-
-
-                </form>
-
-
+                        <br><br>
+                        <a href="#" class="forgot">Forgot password?</a>
+                    </form>
+                </div>
             </div>
-
-
         </div>
 
 
+        <!-- FOOTER -->
+        <footer>
+            <div>
+                <h2>Accudetek</h2>
+                <p>Health & Diagnostics</p>
+                <p>Accudetek Health Diagnostics is a Clinical Laboratory established in 2019.</p>
+            </div>
+            <div>
+                <h3>Visit Us</h3>
+                <p>Address: Ground floor, J. Building #12 M.H. Del Pilar St.</p>
+                <p>San Nicolas, Pasig City</p>
+                <p>Monday - Saturday<br>6 AM - 6 PM</p>
+            </div>
+            <div>
+                <h3>Our Services</h3>
+                <p>Doctor's Consultation</p>
+                <p>COVID-19 Tests</p>
+                <p>General Health Package A</p>
+                <p>Diabetes Package 1</p>
+                <p>Vaccine Package</p>
+            </div>
+            <div>
+                <h3>Contact Us</h3>
+                <p>CP No: 0917-323-8391</p>
+                <p>0953-513-2333</p>
+                <p>accudetek.reception2021@gmail.com</p>
+            </div>
+        </footer>
     </div>
 
 
+    <!-- DASHBOARD PAGE CONTAINER -->
+    <div id="dashboard-page" class="dashboard-container">
+        <div class="app">
+            <!-- SIDEBAR NAVIGATION -->
+            <aside class="sidebar">
+                <div class="brand">
+                    <h1>Accudetek</h1>
+                    <p>Health & Diagnostics</p>
+                </div>
+                <nav class="nav-menu">
+                    <button class="nav-btn active"><i class="fa-solid fa-border-all"></i> Dashboard</button>
+                    <button class="nav-btn"><i class="fa-solid fa-user-doctor"></i> Doctors</button>
+                    <button class="nav-btn"><i class="fa-solid fa-user-nurse"></i> Nurse</button>
+                    <button class="nav-btn"><i class="fa-solid fa-hospital-user"></i> Patients</button>
+                    <button class="nav-btn"><i class="fa-solid fa-receipt"></i> Billing</button>
+                    <button class="nav-btn"><i class="fa-solid fa-file-medical"></i> Consultation</button>
+                    <button class="nav-btn"><i class="fa-solid fa-briefcase-medical"></i> Medical Services</button>
+                </nav>
+            </aside>
 
 
-    <!-- FOOTER -->
-    <footer>
+            <!-- MAIN AREA -->
+            <main class="dashboard-main">
+                <header class="topbar">
+                    <select aria-label="Select Department">
+                        <option value="">Select Department</option>
+                        <option>Laboratory</option>
+                        <option>Radiology</option>
+                        <option>Cardiology</option>
+                    </select>
+                    <div class="admin-profile">
+                        <svg class="admin-avatar" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="50" fill="#72b5ad"/>
+                            <path d="M15,95 C20,68 35,62 50,62 C65,62 80,68 85,95 Z" fill="#2b3856"/>
+                            <path d="M35,60 L50,85 L65,60 Z" fill="#ffffff"/>
+                            <path d="M42,60 L50,75 L58,60 Z" fill="#dfdfdf"/>
+                            <path d="M50,70 L50,85" stroke="#a0a0a0" stroke-width="1.5"/>
+                            <ellipse cx="50" cy="48" rx="15" ry="20" fill="#f8c19a"/>
+                            <path d="M33,40 C30,18 70,18 67,40 C63,22 37,22 33,40 Z" fill="#2a1e1d"/>
+                            <path d="M33,35 C28,45 28,60 38,62 C38,50 33,40 33,35 Z" fill="#2a1e1d"/>
+                            <path d="M67,35 C72,45 72,60 62,62 C62,50 67,40 67,35 Z" fill="#2a1e1d"/>
+                            <ellipse cx="44" cy="46" rx="2" ry="1.5" fill="#2a1e1d"/>
+                            <ellipse cx="56" cy="46" rx="2" ry="1.5" fill="#2a1e1d"/>
+                            <path d="M43,54 Q50,60 57,54" stroke="#d9534f" stroke-width="2" fill="none" stroke-linecap="round"/>
+                        </svg>
+                        <span>Admin <i class="fa-solid fa-chevron-down" style="font-size: 9px;"></i></span>
+                    </div>
+                </header>
 
 
-        <div>
-            <h2>Accudetek</h2>
-            <p>Health & Diagnostics</p>
-            <p>
-                Accudetek Health Diagnostics is a
-                Clinical Laboratory established in 2019.
-            </p>
+                <div class="content">
+                    <h1 class="page-title">Dashboard</h1>
+
+
+                    <!-- STAT CARDS -->
+                    <div class="cards">
+                        <div class="card">
+                            <div>
+                                <h2>12</h2>
+                                <p>Doctors</p>
+                            </div>
+                            <div class="card-icon">
+                                <i class="fa-solid fa-user-doctor"></i>
+                            </div>
+                        </div>
+
+
+                        <div class="card">
+                            <div>
+                                <h2>15</h2>
+                                <p>Nurse</p>
+                            </div>
+                            <div class="card-icon">
+                                <i class="fa-solid fa-user-nurse"></i>
+                            </div>
+                        </div>
+
+
+                        <div class="card">
+                            <div>
+                                <h2>15</h2>
+                                <p>Patient</p>
+                            </div>
+                            <div class="card-icon">
+                                <i class="fa-solid fa-hospital-user"></i>
+                            </div>
+                        </div>
+
+
+                        <div class="card">
+                            <div>
+                                <h2>10</h2>
+                                <p>Consultation</p>
+                            </div>
+                            <div class="card-icon">
+                                <i class="fa-solid fa-door-closed"></i>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- TABLES -->
+                    <div class="tables-grid">
+                        <!-- DOCTORS ON DUTY -->
+                        <div class="panel">
+                            <div class="panel-header">Doctors on duty</div>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Role</th>
+                                        <th>Specialty</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Dr. Fabro</td>
+                                        <td>Operation Manager</td>
+                                        <td>Technologist</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Dr. Molinos</td>
+                                        <td>Medical expert</td>
+                                        <td>Radiologic</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Dr. Perez</td>
+                                        <td>Head of Laboratory</td>
+                                        <td>Neurology</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Dr. Alia</td>
+                                        <td>Collaborator</td>
+                                        <td>Family medicine</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                        <!-- NEW ADMITTED PATIENT -->
+                        <div class="panel">
+                            <div class="panel-header">New admitted patient</div>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Department</th>
+                                        <th>Date</th>
+                                        <th>Phone Number</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Eleyn</td>
+                                        <td>Cardiovascular</td>
+                                        <td>3 Mar, 2025</td>
+                                        <td>+0123456789</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tine</td>
+                                        <td>Neurology</td>
+                                        <td>4 Mar, 2025</td>
+                                        <td>+0123456789</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Angelica</td>
+                                        <td>Gynaecology</td>
+                                        <td>5 Mar, 2025</td>
+                                        <td>+0123456789</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </main>
         </div>
-
-
-        <div>
-            <h3>Visit Us</h3>
-            <p>
-                Address: Ground floor,
-                J. Building #12 M.H. Del Pilar St.
-            </p>
-            <p>
-                San Nicolas, Pasig City
-            </p>
-            <p>
-                Monday - Saturday<br>
-                6 AM - 6 PM
-            </p>
-        </div>
-
-
-        <div>
-            <h3>Our Services</h3>
-            <p>Doctor's Consultation</p>
-            <p>COVID-19 Tests</p>
-            <p>General Health Package A</p>
-            <p>Diabetes Package 1</p>
-            <p>Vaccine Package</p>
-        </div>
-
-
-        <div>
-            <h3>Contact Us</h3>
-            <p>CP No: 0917-323-8391</p>
-            <p>0953-513-2333</p>
-            <p>accudetek.reception2021@gmail.com</p>
-        </div>
-
-
-    </footer>
-
-
-
-
+    </div>
+      <div class="logo-container">
+  <img src="acl.jpeg" alt="Accudetek Health & Diagnostics Logo" class="brand-logo">
+</div>
     <script>
-
-
         function ourServices() {
-
-
-            window.location.href =
-            "https://accudetekhealthdiagnostics.com/services/";
-
-
+            window.location.href = "https://accudetekhealthdiagnostics.com/services/";
         }
-
-
-
-
         function bookAppointment() {
-
-
-            window.location.href =
-            "https://accudetekhealthdiagnostics.com/";
-
-
+            window.location.href = "https://accudetekhealthdiagnostics.com/";
         }
-
-
-
-
         function signIn() {
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
 
 
-            var email =
-                document.getElementById("email").value;
-
-
-            var password =
-                document.getElementById("password").value;
-
-
-
-
-            if (email == "" || password == "") {
-
-
+            if (email.trim() === "" || password.trim() === "") {
                 alert("Please enter your email and password.");
-
-
+            } else {
+                document.getElementById("login-page").style.display = "none";
+                document.getElementById("dashboard-page").style.display = "block";
             }
-
-
-            else {
-
-
-                window.location.href = "dashboard.html";
-
-
-            }
-
-
         }
-
-
     </script>
-
-
 </body>
-
-
 </html>
