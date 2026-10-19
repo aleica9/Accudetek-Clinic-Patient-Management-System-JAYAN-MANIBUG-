@@ -1,11 +1,9 @@
 <html>
 <head>
-    
     <title>Accudetek Health & Diagnostics - Login & Dashboard</title>
-    
-    <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+       
         * {
             box-sizing: border-box;
             margin: 0;
@@ -13,13 +11,11 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-
         body {
             background-color: #003b36;
             color: #243c3b;
             min-height: 100vh;
         }
-
 
         .login-wrapper {
             display: flex;
@@ -27,13 +23,14 @@
             min-height: 650px;
         }
 
-
         .left {
             width: 57%;
             background-color: white;
-            padding: 20px;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
         }
-
 
         .right {
             width: 43%;
@@ -42,54 +39,61 @@
             padding: 30px;
         }
 
-
+        
         .clinic-image {
             width: 100%;
-            height: 52%;
+            height: 80%;
             object-fit: cover;
-            border-radius: 4px;
+            display: block;
         }
 
+        .map-section {
+            padding: 0 15px 15px 15px;
+        }
 
         .map {
             width: 100%;
-            height: 180px;
+            height: 300px;
             object-fit: cover;
-            border-radius: 4px;
-            margin-top: 10px;
+            border: 1px solid #dcdcdc;
+            display: block;
         }
-
 
         .visit {
             text-align: center;
             color: #008080;
             font-size: 18px;
             font-weight: bold;
-            margin: 15px 0;
+            margin: 15px 0 5px 0;
         }
-
 
         .brand-logo {
-            max-width: 120px;
+            max-width: 230px;
             height: auto;
             display: block;
-            margin: 0 auto 10px auto;
+            margin: 0 auto 15px auto;
+            object-fit: contain;
         }
 
+        .sidebar-logo {
+            max-width: 170px;
+            height: auto;
+            display: block;
+            margin-bottom: 20px;
+            object-fit: contain;
+        }
 
         .tagline {
             text-align: center;
-            font-size: 22px;
+            font-size: 40px;
             color: #10a6a6;
             margin-bottom: 20px;
         }
-
 
         .buttons {
             text-align: center;
             margin-top: 15px;
         }
-
 
         .buttons input {
             width: 180px;
@@ -101,35 +105,30 @@
             font-weight: bold;
         }
 
-
         .service {
             background-color: #d9534f;
             color: white;
         }
-
 
         .appointment {
             background-color: #087878;
             color: white;
         }
 
-
         .login-box {
             background-color: #8aa9a9;
-            padding: 20px;
-            margin-top: 20px;
+            padding: 30px;
+            margin-top: 50px;
             border-radius: 5px;
         }
 
-
         .login-box label {
-            font-size: 13px;
+            font-size: 20px;
             font-weight: bold;
             color: #003b36;
         }
 
-
-        .login-box input[type="email"],
+        .login-box input[type="email"], 
         .login-box input[type="password"] {
             width: 100%;
             padding: 10px;
@@ -138,7 +137,6 @@
             border: none;
             border-radius: 5px;
         }
-
 
         .signin {
             width: 100%;
@@ -151,18 +149,11 @@
             cursor: pointer;
         }
 
-
         .forgot {
             color: #003b36;
             font-size: 12px;
             text-decoration: none;
         }
-
-
-        .forgot:hover {
-            text-decoration: underline;
-        }
-
 
         footer {
             display: flex;
@@ -173,29 +164,25 @@
             gap: 20px;
         }
 
-
         footer div {
             width: 25%;
         }
 
-
-        footer h2, footer h3 {
+        footer h2, 
+        footer h3 {
             margin-bottom: 8px;
         }
 
-
-        /* DASHBOARD STYLES */
         .dashboard-container {
             display: none;
             min-height: 100vh;
         }
-       
+
         .app {
             display: flex;
             width: 100vw;
             min-height: 100vh;
         }
-
 
         .sidebar {
             width: 210px;
@@ -204,29 +191,11 @@
             flex-shrink: 0;
         }
 
-
-        .brand h1 {
-            font-size: 18px;
-            color: #003b36;
-            font-weight: bold;
-            line-height: 1.1;
-        }
-
-
-        .brand p {
-            font-size: 11px;
-            color: #003b36;
-            margin-top: 2px;
-            margin-bottom: 25px;
-        }
-
-
         .nav-menu {
             display: flex;
             flex-direction: column;
             gap: 4px;
         }
-
 
         .nav-btn {
             display: flex;
@@ -244,19 +213,17 @@
             width: 100%;
         }
 
-
         .nav-btn i {
             width: 16px;
             text-align: center;
             font-size: 14px;
         }
 
-
-        .nav-btn.active, .nav-btn:hover {
+        .nav-btn.active, 
+        .nav-btn:hover {
             background-color: #ffffff;
             color: #003b36;
         }
-
 
         .dashboard-main {
             flex: 1;
@@ -265,48 +232,44 @@
             min-width: 0;
         }
 
-
         .topbar {
-            background-color: #7b9f9e;
+            background-color: #7faeab;
             height: 48px;
             display: flex;
             justify-content: flex-end;
             align-items: center;
             padding: 0 20px;
             gap: 15px;
-            border-left: 1px solid rgba(0, 0, 0, 0.05);
         }
-
 
         .topbar select {
             background-color: #ffffff;
             border: none;
-            padding: 5px 10px;
+            padding: 5px 12px;
             border-radius: 4px;
             font-size: 11px;
-            color: #555;
+            color: #3b524f;
             cursor: pointer;
+            outline: none;
         }
-
 
         .admin-profile {
             display: flex;
             align-items: center;
             gap: 8px;
             font-size: 12px;
-            font-weight: bold;
-            color: #003b36;
+            font-weight: 600;
+            color: #123835;
+            padding-left: 10px;
+            border-left: 1px solid rgba(255, 255, 255, 0.4);
         }
-
 
         .admin-avatar {
             width: 28px;
             height: 28px;
             border-radius: 50%;
-            object-fit: cover;
-            background-color: #7b9f9e;
+            background-color: #5d8e8b;
         }
-
 
         .content {
             padding: 20px;
@@ -318,20 +281,16 @@
             gap: 20px;
         }
 
-
         .page-title {
             color: #c8d356;
             font-size: 20px;
             font-weight: bold;
         }
-
-
         .cards {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 12px;
         }
-
 
         .card {
             background-color: #ffffff;
@@ -342,21 +301,17 @@
             align-items: center;
         }
 
-
         .card h2 {
             font-size: 32px;
             color: #243c3b;
             font-weight: bold;
-            line-height: 1;
             margin-bottom: 4px;
         }
-
 
         .card p {
             font-size: 12px;
             color: #7b8c8b;
         }
-
 
         .card-icon {
             background-color: #dce475;
@@ -370,20 +325,17 @@
             font-size: 18px;
         }
 
-
         .tables-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 12px;
         }
 
-
         .panel {
             background-color: #ffffff;
             border-radius: 4px;
             overflow: hidden;
         }
-
 
         .panel-header {
             padding: 12px 16px;
@@ -393,95 +345,347 @@
             border-bottom: 1px solid #e4ebea;
         }
 
-
-        .dashboard-container table {
+        table {
             width: 100%;
             border-collapse: collapse;
             font-size: 11px;
         }
 
-
-        .dashboard-container th,
-        .dashboard-container td {
+        th, td {
             padding: 10px 16px;
             text-align: left;
             border-bottom: 1px solid #f0f4f3;
         }
 
-
-        .dashboard-container th {
+        th {
             color: #7b8c8b;
             font-weight: normal;
         }
 
-
-        .dashboard-container td {
+        td {
             color: #243c3b;
         }
 
+        .tab-content {
+            display: none;
+        }
 
-        .dashboard-container tr:last-child td {
-            border-bottom: none;
+        .tab-content.active-tab {
+            display: block;
+        }
+
+        .sub-view {
+            display: none;
+        }
+
+        .sub-view.active-sub {
+            display: block;
+        }
+
+        .panel-card {
+            background-color: #ffffff;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .panel-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .panel-header-row h2 {
+            font-size: 18px;
+            font-weight: bold;
+            color: #243c3b;
+        }
+
+        .panel-header-row p {
+            font-size: 11px;
+            color: #7b8c8b;
+        }
+
+        .add-btn {
+            background-color: #dce475;
+            color: #3f4b00;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+        }
+
+        .btn-patient-records {
+            background-color: #c8d356;
+            color: #3f4b00;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .btn-back-grey {
+            background-color: #8aa9a9;
+            color: #ffffff;
+            border: none;
+            padding: 6px 16px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .filter-bar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+
+        .search-box {
+            position: relative;
+            flex: 1;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 8px 12px 8px 32px;
+            border: 1px solid #dcdcdc;
+            border-radius: 4px;
+            font-size: 11px;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #7b8c8b;
+            font-size: 12px;
+        }
+
+        .filter-dropdown {
+            padding: 8px 12px;
+            border: 1px solid #dcdcdc;
+            border-radius: 4px;
+            background: #fff;
+            font-size: 11px;
+            color: #243c3b;
+            cursor: pointer;
+        }
+
+        .action-icons {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .action-icons i {
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .action-icons .fa-trash-can {
+            color: #d9534f;
+        }
+
+        .action-icons .fa-pen-to-square {
+            color: #5cb85c;
+        }
+
+        .action-icons .fa-eye {
+            color: #0275d8;
+        }
+
+        .action-icons .fa-mobile-screen {
+            color: #5bc0de;
+        }
+
+        .badge {
+            padding: 4px 10px;
+            border-radius: 3px;
+            font-size: 10px;
+            font-weight: bold;
+            color: white;
+            display: inline-block;
+            cursor: pointer;
+            border: none;
+        }
+
+        .badge-pending {
+            background-color: #f0ad4e;
+        }
+
+        .badge-paid {
+            background-color: #5cb85c;
+        }
+
+        .badge-admit {
+            background-color: #0275d8;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            position: relative;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        .form-group label {
+            font-size: 11px;
+            color: #243c3b;
+            font-weight: 600;
+        }
+
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            padding: 8px 10px;
+            border: 1px solid #dcdcdc;
+            border-radius: 4px;
+            font-size: 12px;
+            outline: none;
+        }
+
+        .form-group textarea {
+            height: 100px;
+            resize: none;
+        }
+
+        .input-with-icon {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-with-icon input {
+            width: 100%;
+            padding-right: 30px;
+        }
+
+        .input-with-icon i {
+            position: absolute;
+            right: 10px;
+            color: #7b8c8b;
+            pointer-events: none;
+            font-size: 13px;
+        }
+
+        .btn-save {
+            background-color: #c8d356;
+            color: #3f4b00;
+            border: none;
+            padding: 8px 28px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            width: fit-content;
+        }
+
+        .sub-card-box {
+            border: 1px solid #e4ebea;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+            background: #fafcfc;
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: #003b36;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+
+        .patient-detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .detail-box {
+            background: #fdfdfd;
+            border: 1px solid #e4ebea;
+            border-radius: 4px;
+            padding: 15px;
+        }
+
+        .detail-box h3 {
+            font-size: 13px;
+            margin-bottom: 10px;
+            color: #003b36;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            padding: 6px 0;
+            border-bottom: 1px solid #f5f5f5;
         }
     </style>
 </head>
 <body>
 
-
-    <!-- LOGIN PAGE CONTAINER -->
+  
     <div id="login-page">
         <div class="login-wrapper">
-            <!-- LEFT SIDE -->
             <div class="left">
-                <img src="3.jpg" alt="Clinic Team" class="clinic-image">
-                <p class="visit">You can visit our clinic here.</p>
-                <img src="map.jpg" alt="Location Map" class="map">
+                <!-- EDGE-TO-EDGE FULL FILL IMAGE -->
+                <img src="3.jpeg.png" alt="Clinic Team" class="clinic-image">
+                <div class="map-section">
+                    <p class="visit">You can visit our clinic here.</p>
+                    <img src="maps.jpg" alt="Location Map" class="map">
+                </div>
             </div>
-
-
-            <!-- RIGHT SIDE -->
             <div class="right">
                 <div class="logo-image-container">
-                    <img src="acl.jpg" alt="Accudetek Health & Diagnostics Logo" class="brand-logo">
+                    <img src="logo.png" alt="Accudetek Health & Diagnostics Logo" class="brand-logo">
                 </div>
-
-
-                <p class="tagline">
-                    PASYENTE ANG UNA.<br>
-                    <b>MAAGAP NA RESULTA.</b>
-                </p>
-
-
-                <!-- WEBSITE BUTTONS -->
+                <p class="tagline">PASYENTE ANG UNA.<br><b>MAAGAP NA RESULTA.</b></p>
                 <div class="buttons">
                     <input type="button" value="Our Services" class="service" onclick="ourServices()">
                     <br>
                     <input type="button" value="Book Appointment" class="appointment" onclick="bookAppointment()">
                 </div>
-
-
-                <!-- LOGIN FORM -->
                 <div class="login-box">
                     <form onsubmit="event.preventDefault(); signIn();">
                         <label>Email</label>
                         <input type="email" id="email" placeholder="Enter email">
-                       
                         <label>Password</label>
                         <input type="password" id="password" placeholder="Enter password">
-
-
                         <input type="button" value="Sign In" class="signin" onclick="signIn()">
-
-
                         <br><br>
-                        <a href="#" class="forgot">Forgot password?</a>
+                        <a href="#" class="forgot" onclick="alert('Password reset link sent.'); return false;">Forgot password?</a>
                     </form>
                 </div>
             </div>
         </div>
-
-
-        <!-- FOOTER -->
         <footer>
             <div>
                 <h2>Accudetek</h2>
@@ -490,50 +694,39 @@
             </div>
             <div>
                 <h3>Visit Us</h3>
-                <p>Address: Ground floor, J. Building #12 M.H. Del Pilar St.</p>
-                <p>San Nicolas, Pasig City</p>
-                <p>Monday - Saturday<br>6 AM - 6 PM</p>
+                <p>Address: Ground floor, J. Building #12 M.H. Del Pilar St., San Nicolas, Pasig City</p>
+                <p>Monday - Saturday | 6 AM - 6 PM</p>
             </div>
             <div>
                 <h3>Our Services</h3>
-                <p>Doctor's Consultation</p>
-                <p>COVID-19 Tests</p>
-                <p>General Health Package A</p>
-                <p>Diabetes Package 1</p>
-                <p>Vaccine Package</p>
+                <p>Doctor's Consultation, COVID-19 Tests, Health Packages</p>
             </div>
             <div>
                 <h3>Contact Us</h3>
-                <p>CP No: 0917-323-8391</p>
-                <p>0953-513-2333</p>
+                <p>CP No: 0917-323-8391 / 0953-513-2333</p>
                 <p>accudetek.reception2021@gmail.com</p>
             </div>
         </footer>
     </div>
 
-
-    <!-- DASHBOARD PAGE CONTAINER -->
+  
     <div id="dashboard-page" class="dashboard-container">
         <div class="app">
-            <!-- SIDEBAR NAVIGATION -->
             <aside class="sidebar">
                 <div class="brand">
-                    <h1>Accudetek</h1>
-                    <p>Health & Diagnostics</p>
+                    <img src="logo.png" alt="Accudetek Health & Diagnostics" class="sidebar-logo">
                 </div>
                 <nav class="nav-menu">
-                    <button class="nav-btn active"><i class="fa-solid fa-border-all"></i> Dashboard</button>
-                    <button class="nav-btn"><i class="fa-solid fa-user-doctor"></i> Doctors</button>
-                    <button class="nav-btn"><i class="fa-solid fa-user-nurse"></i> Nurse</button>
-                    <button class="nav-btn"><i class="fa-solid fa-hospital-user"></i> Patients</button>
-                    <button class="nav-btn"><i class="fa-solid fa-receipt"></i> Billing</button>
-                    <button class="nav-btn"><i class="fa-solid fa-file-medical"></i> Consultation</button>
-                    <button class="nav-btn"><i class="fa-solid fa-briefcase-medical"></i> Medical Services</button>
+                    <button class="nav-btn active" onclick="switchTab('dashboard-tab', this)"><i class="fa-solid fa-border-all"></i> Dashboard</button>
+                    <button class="nav-btn" onclick="switchTab('doctors-tab', this)"><i class="fa-solid fa-user-doctor"></i> Doctors</button>
+                    <button class="nav-btn" onclick="switchTab('nurse-tab', this)"><i class="fa-solid fa-user-nurse"></i> Nurse</button>
+                    <button class="nav-btn" onclick="switchTab('patients-tab', this)"><i class="fa-solid fa-hospital-user"></i> Patients</button>
+                    <button class="nav-btn" onclick="switchTab('billing-tab', this)"><i class="fa-solid fa-receipt"></i> Billing</button>
+                    <button class="nav-btn" onclick="switchTab('consultation-tab', this)"><i class="fa-solid fa-file-medical"></i> Consultation</button>
+                    <button class="nav-btn" onclick="switchTab('services-tab', this)"><i class="fa-solid fa-briefcase-medical"></i> Medical Services</button>
                 </nav>
             </aside>
 
-
-            <!-- MAIN AREA -->
             <main class="dashboard-main">
                 <header class="topbar">
                     <select aria-label="Select Department">
@@ -542,176 +735,1021 @@
                         <option>Radiology</option>
                         <option>Cardiology</option>
                     </select>
-                    <div class="admin-profile">
-                        <svg class="admin-avatar" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <div class="admin-profile" onclick="alert('Admin Profile Settings')" style="cursor: pointer;">
+                        <svg class="admin-avatar" viewBox="0 0 100 100">
                             <circle cx="50" cy="50" r="50" fill="#72b5ad"/>
                             <path d="M15,95 C20,68 35,62 50,62 C65,62 80,68 85,95 Z" fill="#2b3856"/>
-                            <path d="M35,60 L50,85 L65,60 Z" fill="#ffffff"/>
-                            <path d="M42,60 L50,75 L58,60 Z" fill="#dfdfdf"/>
-                            <path d="M50,70 L50,85" stroke="#a0a0a0" stroke-width="1.5"/>
                             <ellipse cx="50" cy="48" rx="15" ry="20" fill="#f8c19a"/>
-                            <path d="M33,40 C30,18 70,18 67,40 C63,22 37,22 33,40 Z" fill="#2a1e1d"/>
-                            <path d="M33,35 C28,45 28,60 38,62 C38,50 33,40 33,35 Z" fill="#2a1e1d"/>
-                            <path d="M67,35 C72,45 72,60 62,62 C62,50 67,40 67,35 Z" fill="#2a1e1d"/>
-                            <ellipse cx="44" cy="46" rx="2" ry="1.5" fill="#2a1e1d"/>
-                            <ellipse cx="56" cy="46" rx="2" ry="1.5" fill="#2a1e1d"/>
-                            <path d="M43,54 Q50,60 57,54" stroke="#d9534f" stroke-width="2" fill="none" stroke-linecap="round"/>
                         </svg>
-                        <span>Admin <i class="fa-solid fa-chevron-down" style="font-size: 9px;"></i></span>
+                        <span>Micaela <i class="fa-solid fa-chevron-down" style="font-size: 9px;"></i></span>
                     </div>
                 </header>
 
-
                 <div class="content">
-                    <h1 class="page-title">Dashboard</h1>
-
-
-                    <!-- STAT CARDS -->
-                    <div class="cards">
-                        <div class="card">
-                            <div>
-                                <h2>12</h2>
-                                <p>Doctors</p>
+                    <!-- MAIN DASHBOARD TAB -->
+                    <div id="dashboard-tab" class="tab-content active-tab">
+                        <h1 class="page-title">Dashboard</h1>
+                        <div class="cards">
+                            <div class="card" onclick="switchTabByNav('doctors-tab')" style="cursor: pointer;">
+                                <div><h2 id="doc-count">4</h2><p>Doctors</p></div>
+                                <div class="card-icon"><i class="fa-solid fa-user-doctor"></i></div>
                             </div>
-                            <div class="card-icon">
-                                <i class="fa-solid fa-user-doctor"></i>
+                            <div class="card" onclick="switchTabByNav('nurse-tab')" style="cursor: pointer;">
+                                <div><h2 id="nurse-count">4</h2><p>Nurse</p></div>
+                                <div class="card-icon"><i class="fa-solid fa-user-nurse"></i></div>
                             </div>
-                        </div>
-
-
-                        <div class="card">
-                            <div>
-                                <h2>15</h2>
-                                <p>Nurse</p>
+                            <div class="card" onclick="switchTabByNav('patients-tab')" style="cursor: pointer;">
+                                <div><h2 id="patient-count">3</h2><p>Patient</p></div>
+                                <div class="card-icon"><i class="fa-solid fa-hospital-user"></i></div>
                             </div>
-                            <div class="card-icon">
-                                <i class="fa-solid fa-user-nurse"></i>
+                            <div class="card" onclick="switchTabByNav('consultation-tab')" style="cursor: pointer;">
+                                <div><h2>10</h2><p>Consultation</p></div>
+                                <div class="card-icon"><i class="fa-solid fa-door-closed"></i></div>
                             </div>
                         </div>
 
-
-                        <div class="card">
-                            <div>
-                                <h2>15</h2>
-                                <p>Patient</p>
+                        <div class="tables-grid" style="margin-top: 20px;">
+                            <div class="panel">
+                                <div class="panel-header">Doctors on duty</div>
+                                <table>
+                                    <thead><tr><th>Name</th><th>Role</th><th>Specialty</th></tr></thead>
+                                    <tbody id="dash-doctors-list"></tbody>
+                                </table>
                             </div>
-                            <div class="card-icon">
-                                <i class="fa-solid fa-hospital-user"></i>
-                            </div>
-                        </div>
-
-
-                        <div class="card">
-                            <div>
-                                <h2>10</h2>
-                                <p>Consultation</p>
-                            </div>
-                            <div class="card-icon">
-                                <i class="fa-solid fa-door-closed"></i>
+                            <div class="panel">
+                                <div class="panel-header">New admitted patient</div>
+                                <table>
+                                    <thead><tr><th>Name</th><th>Department</th><th>Date</th></tr></thead>
+                                    <tbody>
+                                        <tr><td>Eleyn</td><td>Cardiovascular</td><td>3 Mar, 2025</td></tr>
+                                        <tr><td>Tine</td><td>Neurology</td><td>4 Mar, 2025</td></tr>
+                                        <tr><td>Angelica</td><td>Gynaecology</td><td>5 Mar, 2025</td></tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
 
+                    <!-- DOCTORS TAB -->
+                    <div id="doctors-tab" class="tab-content">
+                        <div id="doctors-list-view" class="sub-view active-sub">
+                            <div class="panel-card">
+                                <div class="panel-header-row">
+                                    <div><h2>Doctors</h2><p id="doctors-counter-text">Showing 4 of 4</p></div>
+                                    <button class="add-btn" onclick="showSubView('doctors-tab', 'add-doctor-view')"><i class="fa-solid fa-circle-plus"></i> Add Doctor</button>
+                                </div>
+                                <div class="filter-bar">
+                                    <div class="search-box">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                        <input type="text" id="doctor-search" placeholder="Searching..." onkeyup="filterDoctors()">
+                                    </div>
+                                    <span style="font-size: 11px; color: #7b8c8b;">Filter</span>
+                                    <select class="filter-dropdown" id="doctor-role-filter" onchange="filterDoctors()">
+                                        <option value="">Role</option>
+                                        <option>Professors</option>
+                                        <option>Medical expert</option>
+                                        <option>Communicator</option>
+                                        <option>Collaborator</option>
+                                    </select>
+                                    <select class="filter-dropdown" id="doctor-spec-filter" onchange="filterDoctors()">
+                                        <option value="">Specialty</option>
+                                        <option>Radiologist</option>
+                                        <option>Medical Technologist</option>
+                                        <option>Neurology</option>
+                                        <option>Family medicine</option>
+                                    </select>
+                                </div>
+                                <table>
+                                    <thead><tr><th>Name</th><th>Role</th><th>Specialty</th><th>Phone Number</th><th>Email</th><th>Action</th></tr></thead>
+                                    <tbody id="doctors-table-body"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div id="add-doctor-view" class="sub-view">
+                            <div class="panel-card">
+                                <div class="panel-header-row">
+                                    <h2>Add Doctor</h2>
+                                    <button class="add-btn" style="background:#7b9f9e; color:#fff;" onclick="showSubView('doctors-tab', 'doctors-list-view')"><i class="fa-solid fa-arrow-left"></i> Back</button>
+                                </div>
+                                <form onsubmit="event.preventDefault(); saveDoctor();">
+                                    <div class="form-grid">
+                                        <div class="form-group"><label>First name *</label><input type="text" id="doc-firstname" required></div>
+                                        <div class="form-group"><label>Last name *</label><input type="text" id="doc-lastname" required></div>
+                                        <div class="form-group"><label>Email *</label><input type="email" id="doc-email" required></div>
+                                        <div class="form-group"><label>Phone *</label><input type="text" id="doc-phone" required></div>
+                                        <div class="form-group"><label>Role</label><select id="doc-role"><option value="">- select -</option><option>Professors</option><option>Medical expert</option></select></div>
+                                        <div class="form-group"><label>Specialty</label><select id="doc-specialty"><option value="">- select -</option><option>Radiologist</option><option>Neurology</option></select></div>
+                                        <div class="form-group full-width"><label>Gender</label><select id="doc-gender"><option value="">- select -</option><option>Male</option><option>Female</option></select></div>
+                                        <div class="form-group full-width"><label>Notes</label><textarea id="doc-notes"></textarea></div>
+                                    </div>
+                                    <button type="submit" class="btn-save">Save</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
 
-                    <!-- TABLES -->
-                    <div class="tables-grid">
-                        <!-- DOCTORS ON DUTY -->
-                        <div class="panel">
-                            <div class="panel-header">Doctors on duty</div>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Role</th>
-                                        <th>Specialty</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Dr. Fabro</td>
-                                        <td>Operation Manager</td>
-                                        <td>Technologist</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Dr. Molinos</td>
-                                        <td>Medical expert</td>
-                                        <td>Radiologic</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Dr. Perez</td>
-                                        <td>Head of Laboratory</td>
-                                        <td>Neurology</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Dr. Alia</td>
-                                        <td>Collaborator</td>
-                                        <td>Family medicine</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                    <!-- NURSE TAB -->
+                    <div id="nurse-tab" class="tab-content">
+                        <div id="nurse-list-view" class="sub-view active-sub">
+                            <div class="panel-card">
+                                <div class="panel-header-row">
+                                    <div><h2>Available Nurses</h2><p id="nurse-counter-text">Showing 4 of 4</p></div>
+                                    <button class="add-btn" onclick="showSubView('nurse-tab', 'add-nurse-view')"><i class="fa-solid fa-circle-plus"></i> Add Nurse</button>
+                                </div>
+                                <div class="filter-bar">
+                                    <div class="search-box">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                        <input type="text" id="nurse-search" placeholder="Searching..." onkeyup="filterNurses()">
+                                    </div>
+                                    <span style="font-size: 11px; color: #7b8c8b;">Filter</span>
+                                    <select class="filter-dropdown" id="nurse-role-filter" onchange="filterNurses()">
+                                        <option value="">Role</option>
+                                        <option>Medication Admin</option>
+                                        <option>Health collaboration</option>
+                                        <option>Medical device</option>
+                                        <option>Recording patient</option>
+                                    </select>
+                                    <select class="filter-dropdown" id="nurse-spec-filter" onchange="filterNurses()">
+                                        <option value="">Specialty</option>
+                                        <option>Oncology nursing</option>
+                                        <option>Critical care nursing</option>
+                                        <option>Neonatal nurse</option>
+                                        <option>Cardiac nursing</option>
+                                    </select>
+                                </div>
+                                <table>
+                                    <thead><tr><th>Name</th><th>Role</th><th>Specialty</th><th>Phone Number</th><th>Email</th><th>Action</th></tr></thead>
+                                    <tbody id="nurse-table-body"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div id="add-nurse-view" class="sub-view">
+                            <div class="panel-card">
+                                <div class="panel-header-row">
+                                    <h2>Add Nurse</h2>
+                                    <button class="add-btn" style="background:#7b9f9e; color:#fff;" onclick="showSubView('nurse-tab', 'nurse-list-view')"><i class="fa-solid fa-arrow-left"></i> Back</button>
+                                </div>
+                                <form onsubmit="event.preventDefault(); saveNurse();">
+                                    <div class="form-grid">
+                                        <div class="form-group"><label>First name *</label><input type="text" id="nurse-firstname" required></div>
+                                        <div class="form-group"><label>Last name *</label><input type="text" id="nurse-lastname" required></div>
+                                        <div class="form-group"><label>Email *</label><input type="email" id="nurse-email" required></div>
+                                        <div class="form-group"><label>Phone *</label><input type="text" id="nurse-phone" required></div>
+                                        <div class="form-group"><label>Role</label><select id="nurse-role"><option value="">- select -</option><option>Medication Admin</option><option>Health collaboration</option><option>Medical device</option><option>Recording patient</option></select></div>
+                                        <div class="form-group"><label>Specialty</label><select id="nurse-specialty"><option value="">- select -</option><option>Oncology nursing</option><option>Critical care nursing</option><option>Neonatal nurse</option><option>Cardiac nursing</option></select></div>
+                                        <div class="form-group full-width"><label>Gender</label><select id="nurse-gender"><option value="">- select -</option><option>Male</option><option>Female</option></select></div>
+                                        <div class="form-group full-width"><label>Notes</label><textarea id="nurse-notes"></textarea></div>
+                                    </div>
+                                    <button type="submit" class="btn-save">Save</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PATIENTS TAB -->
+                    <div id="patients-tab" class="tab-content">
+                        <div id="patients-list-view" class="sub-view active-sub">
+                            <div class="panel-card">
+                                <div class="panel-header-row">
+                                    <div><h2>Patients</h2><p id="patient-counter-text">Showing 3 of 3</p></div>
+                                    <div style="display: flex; gap: 8px;">
+                                        <button class="btn-patient-records" onclick="showPatientDetails('Micaela', 'Jayan', '1', 'jayanmicaela@gmail.com', '+0123456789', '6/Aug/2007', 'Female')">Patient Records</button>
+                                        <button class="add-btn" onclick="showSubView('patients-tab', 'add-patient-view')"><i class="fa-solid fa-circle-plus"></i> Add Patient</button>
+                                    </div>
+                                </div>
+                                <div class="filter-bar">
+                                    <div class="search-box">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                        <input type="text" id="patient-search" placeholder="Searching..." onkeyup="filterPatients()">
+                                    </div>
+                                    <span style="font-size: 11px; color: #7b8c8b;">Filter</span>
+                                    <select class="filter-dropdown" id="patient-id-filter" onchange="filterPatients()">
+                                        <option value="">ID</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                    </select>
+                                    <select class="filter-dropdown" id="patient-gender-filter" onchange="filterPatients()">
+                                        <option value="">Gender</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Male">Male</option>
+                                    </select>
+                                </div>
+                                <table>
+                                    <thead><tr><th>ID</th><th>Name</th><th>Phone Number</th><th>Email</th><th>Date of birth</th><th>Gender</th><th>Action</th></tr></thead>
+                                    <tbody id="patients-table-body"></tbody>
+                                </table>
+                            </div>
+
+                            <div class="panel-card" id="patient-detail-card">
+                                <div class="panel-header-row">
+                                    <h2 id="p-display-title">MICAELA JAYAN</h2>
+                                    <button class="btn-patient-records">Patient Records</button>
+                                </div>
+                                <div class="patient-detail-grid">
+                                    <div class="detail-box">
+                                        <h3>Details</h3>
+                                        <div class="detail-row"><span>Patient_ID:</span> <strong id="p-id">1</strong></div>
+                                        <div class="detail-row"><span>First Name:</span> <strong id="p-fname">MICAELA</strong></div>
+                                        <div class="detail-row"><span>Last Name:</span> <strong id="p-lname">JAYAN</strong></div>
+                                        <div class="detail-row"><span>Email:</span> <strong id="p-email">jayanmicaela@gmail.com</strong></div>
+                                        <div class="detail-row"><span>Phone:</span> <strong id="p-phone">+0123456789</strong></div>
+                                        <div class="detail-row"><span>Date of birth:</span> <strong id="p-dob">6 Aug, 2007</strong></div>
+                                        <div class="detail-row"><span>Gender:</span> <strong id="p-gender">Female</strong></div>
+                                    </div>
+                                    <div class="detail-box">
+                                        <h3>Admission History</h3>
+                                        <table>
+                                            <thead><tr><th>Department</th><th>Doctor</th><th>Date</th><th>Room</th></tr></thead>
+                                            <tbody>
+                                                <tr><td>Cardiovascular</td><td>Dr. Ammar</td><td>12 Apr, 2026</td><td>2560</td></tr>
+                                                <tr><td>Cardiovascular</td><td>Dr. Ali</td><td>27 Apr, 2026</td><td>2560</td></tr>
+                                                <tr><td>Cardiovascular</td><td>Dr. Khan</td><td>2 Mar, 2026</td><td>2560</td></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
+                        <div id="add-patient-view" class="sub-view">
+                            <div class="panel-card">
+                                <div class="panel-header-row">
+                                    <h2>Add Patient</h2>
+                                    <button class="btn-back-grey" onclick="showSubView('patients-tab', 'patients-list-view')"><i class="fa-solid fa-arrow-left"></i> Back</button>
+                                </div>
+                                <form onsubmit="event.preventDefault(); savePatient();">
+                                    <div class="form-grid">
+                                        <div class="form-group"><label>First name *</label><input type="text" id="pat-firstname" required></div>
+                                        <div class="form-group"><label>Last name *</label><input type="text" id="pat-lastname" required></div>
+                                        <div class="form-group"><label>Email *</label><input type="email" id="pat-email" required></div>
+                                        <div class="form-group"><label>Phone *</label><input type="text" id="pat-phone" required></div>
+                                        
+                                        <div class="form-group">
+                                            <label>Date of birth</label>
+                                            <div class="input-with-icon">
+                                                <input type="date" id="pat-dob">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label>Gender</label>
+                                            <select id="pat-gender">
+                                                <option value="">- select -</option>
+                                                <option>Female</option>
+                                                <option>Male</option>
+                                            </select>
+                                        </div>
+                                    </div>
 
-                        <!-- NEW ADMITTED PATIENT -->
-                        <div class="panel">
-                            <div class="panel-header">New admitted patient</div>
+                                    <label class="checkbox-container">
+                                        <input type="checkbox" id="pat-admit-check" checked onchange="toggleAdmitFields()"> Admit Patient
+                                    </label>
+
+                                    <div class="sub-card-box" id="admit-fields-box">
+                                        <div class="form-grid">
+                                            <div class="form-group">
+                                                <label>Room *</label>
+                                                <div class="input-with-icon">
+                                                    <input type="text" id="pat-room" list="rooms-list" placeholder="Search room...">
+                                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                                </div>
+                                                <datalist id="rooms-list">
+                                                    <option value="Room 101"></option>
+                                                    <option value="Room 102"></option>
+                                                    <option value="Room 201"></option>
+                                                    <option value="Room 2560"></option>
+                                                </datalist>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Doctor *</label>
+                                                <div class="input-with-icon">
+                                                    <input type="text" id="pat-doc" list="doctors-datalist" placeholder="Search doctor...">
+                                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group full-width">
+                                                <label>Nurse *</label>
+                                                <div class="input-with-icon">
+                                                    <input type="text" id="pat-nurse" list="nurses-datalist" placeholder="Search nurse...">
+                                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Admission date *</label>
+                                                <div class="input-with-icon">
+                                                    <input type="date" id="pat-admission-date">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Schedule date *</label>
+                                                <div class="input-with-icon">
+                                                    <input type="date" id="pat-schedule-date">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group full-width">
+                                                <label>Medical Services</label>
+                                                <select id="pat-service" class="services-dropdown-list">
+                                                    <option value="">- select -</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="btn-save">Save</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BILLING TAB -->
+                    <div id="billing-tab" class="tab-content">
+                        <div id="billing-list-view" class="sub-view active-sub">
+                            <div class="panel-card">
+                                <div class="panel-header-row">
+                                    <div>
+                                        <h2>Billing Information</h2>
+                                        <p id="billing-counter-text">Showing 4 of 4</p>
+                                    </div>
+                                    <button class="add-btn" onclick="showSubView('billing-tab', 'add-billing-view')"><i class="fa-solid fa-circle-plus"></i> Payment</button>
+                                </div>
+                                <table>
+                                    <thead><tr><th>PATIENT</th><th>Avail Service</th><th>PAYMENT</th><th>PRICE</th><th>Action</th></tr></thead>
+                                    <tbody id="billing-table-body">
+                                        <tr>
+                                            <td>MICA</td><td>D-DIMER Test</td>
+                                            <td><span class="badge badge-pending" onclick="togglePayment(this)">PENDING</span></td>
+                                            <td>PHP 1100.00</td>
+                                            <td>
+                                                <div class="action-icons">
+                                                    <i class="fa-solid fa-trash-can" onclick="deleteRow(this)" title="Delete"></i>
+                                                    <i class="fa-solid fa-pen-to-square" onclick="editGenericRow(this)" title="Edit"></i>
+                                                    <i class="fa-solid fa-eye" onclick="viewGenericRow(this)" title="View"></i>
+                                                    <i class="fa-solid fa-mobile-screen" onclick="alert('Digital payment GCash/Maya initiated')" title="Digital Payment"></i>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>ANGELICA</td><td>Bloodtype and RH Typing</td>
+                                            <td><span class="badge badge-paid" onclick="togglePayment(this)">ATM TRANSFER</span></td>
+                                            <td>PHP 2500.00</td>
+                                            <td>
+                                                <div class="action-icons">
+                                                    <i class="fa-solid fa-trash-can" onclick="deleteRow(this)" title="Delete"></i>
+                                                    <i class="fa-solid fa-pen-to-square" onclick="editGenericRow(this)" title="Edit"></i>
+                                                    <i class="fa-solid fa-eye" onclick="viewGenericRow(this)" title="View"></i>
+                                                    <i class="fa-solid fa-mobile-screen" onclick="alert('Digital payment GCash/Maya initiated')" title="Digital Payment"></i>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>KIM</td><td>Pregnancy Test (Serum)</td>
+                                            <td><span class="badge badge-paid" onclick="togglePayment(this)">GCASH</span></td>
+                                            <td>PHP 270.00</td>
+                                            <td>
+                                                <div class="action-icons">
+                                                    <i class="fa-solid fa-trash-can" onclick="deleteRow(this)" title="Delete"></i>
+                                                    <i class="fa-solid fa-pen-to-square" onclick="editGenericRow(this)" title="Edit"></i>
+                                                    <i class="fa-solid fa-eye" onclick="viewGenericRow(this)" title="View"></i>
+                                                    <i class="fa-solid fa-mobile-screen" onclick="alert('Digital payment GCash/Maya initiated')" title="Digital Payment"></i>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>JAYAN</td><td>XRAY</td>
+                                            <td><span class="badge badge-paid" onclick="togglePayment(this)">CASH</span></td>
+                                            <td>PHP 1000.00</td>
+                                            <td>
+                                                <div class="action-icons">
+                                                    <i class="fa-solid fa-trash-can" onclick="deleteRow(this)" title="Delete"></i>
+                                                    <i class="fa-solid fa-pen-to-square" onclick="editGenericRow(this)" title="Edit"></i>
+                                                    <i class="fa-solid fa-eye" onclick="viewGenericRow(this)" title="View"></i>
+                                                    <i class="fa-solid fa-mobile-screen" onclick="alert('Digital payment GCash/Maya initiated')" title="Digital Payment"></i>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div id="add-billing-view" class="sub-view">
+                            <div class="panel-card" style="max-width: 800px; margin: 0 auto;">
+                                <div class="panel-header-row" style="margin-bottom: 25px;">
+                                    <h2 style="font-size: 20px; font-weight: bold; width: 100%; text-align: center; color: #243c3b;">Add Billing</h2>
+                                </div>
+                                <form onsubmit="event.preventDefault(); saveBilling();">
+                                    <div class="form-grid">
+                                        <div class="form-group">
+                                            <label>Patient *</label>
+                                            <input type="text" id="bill-patient" value="MICAELA JAYAN" required style="background-color: #f2f5f5;">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Doctor *</label>
+                                            <div class="input-with-icon">
+                                                <input type="text" id="bill-doctor" list="doctors-datalist" placeholder="Search doctor..." required>
+                                                <i class="fa-solid fa-magnifying-glass"></i>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group full-width">
+                                            <label>Medical Service</label>
+                                            <select id="bill-service" class="services-dropdown-list">
+                                                <option value="">- select -</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Admission date *</label>
+                                            <div class="input-with-icon">
+                                                <input type="date" id="bill-admission-date" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Schedule date *</label>
+                                            <div class="input-with-icon">
+                                                <input type="date" id="bill-schedule-date" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group full-width">
+                                            <label>Select Payment</label>
+                                            <select id="bill-payment-method" required>
+                                                <option value="">Select Payment</option>
+                                                <option value="Gcash">Gcash</option>
+                                                <option value="Pay maya">Pay maya</option>
+                                                <option value="Bank Transfer">Bank Transfer</option>
+                                                <option value="Cash">Cash</option>
+                                                <option value="Credit card">Credit card</option>
+                                                <option value="Checks & E‑Checks">Checks & E‑Checks</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div style="display: flex; gap: 10px; margin-top: 15px;">
+                                        <button type="submit" class="btn-save">Save</button>
+                                        <button type="button" class="btn-back-grey" onclick="showSubView('billing-tab', 'billing-list-view')">Cancel</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CONSULTATION TAB -->
+                    <div id="consultation-tab" class="tab-content">
+                        <div id="consultation-list-view" class="sub-view active-sub">
+                            <div class="panel-card">
+                                <div class="panel-header-row">
+                                    <div>
+                                        <h2>Consultation</h2>
+                                        <p id="consultation-counter-text">Showing 4 of 4</p>
+                                    </div>
+                                    <button class="add-btn" onclick="showSubView('consultation-tab', 'add-consultation-view')"><i class="fa-solid fa-circle-plus"></i> Add New Consultation</button>
+                                </div>
+                                <table>
+                                    <thead><tr><th>ID</th><th>Name</th><th>Consultation</th><th>Action</th></tr></thead>
+                                    <tbody id="consultation-table-body">
+                                        <tr>
+                                            <td>1</td><td>MICA</td><td>DRUG TEST</td>
+                                            <td>
+                                                <div class="action-icons">
+                                                    <i class="fa-solid fa-trash-can" onclick="deleteRow(this)" title="Delete"></i>
+                                                    <i class="fa-solid fa-pen-to-square" onclick="editGenericRow(this)" title="Edit"></i>
+                                                    <i class="fa-solid fa-eye" onclick="viewGenericRow(this)" title="View"></i>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td><td>ELEYN</td><td>PREGNANCY TEST</td>
+                                            <td>
+                                                <div class="action-icons">
+                                                    <i class="fa-solid fa-trash-can" onclick="deleteRow(this)" title="Delete"></i>
+                                                    <i class="fa-solid fa-pen-to-square" onclick="editGenericRow(this)" title="Edit"></i>
+                                                    <i class="fa-solid fa-eye" onclick="viewGenericRow(this)" title="View"></i>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td><td>KIM</td><td>DRUG TEST</td>
+                                            <td>
+                                                <div class="action-icons">
+                                                    <i class="fa-solid fa-trash-can" onclick="deleteRow(this)" title="Delete"></i>
+                                                    <i class="fa-solid fa-pen-to-square" onclick="editGenericRow(this)" title="Edit"></i>
+                                                    <i class="fa-solid fa-eye" onclick="viewGenericRow(this)" title="View"></i>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td><td>TINE</td><td>DENGUE VACCINE</td>
+                                            <td>
+                                                <div class="action-icons">
+                                                    <i class="fa-solid fa-trash-can" onclick="deleteRow(this)" title="Delete"></i>
+                                                    <i class="fa-solid fa-pen-to-square" onclick="editGenericRow(this)" title="Edit"></i>
+                                                    <i class="fa-solid fa-eye" onclick="viewGenericRow(this)" title="View"></i>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div id="add-consultation-view" class="sub-view">
+                            <div class="panel-card" style="max-width: 800px; margin: 0 auto; padding: 30px;">
+                                <div class="panel-header-row" style="margin-bottom: 25px; display: block; text-align: center;">
+                                    <h2 style="font-size: 20px; font-weight: bold; color: #243c3b;">Add Consultation</h2>
+                                </div>
+                                <form onsubmit="event.preventDefault(); saveConsultation();">
+                                    <div class="form-grid">
+                                        <div class="form-group">
+                                            <label>Name</label>
+                                            <div class="input-with-icon">
+                                                <input type="text" id="consult-name" required placeholder="">
+                                                <i class="fa-solid fa-magnifying-glass"></i>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Age*</label>
+                                            <div class="input-with-icon">
+                                                <input type="text" id="consult-age" required placeholder="">
+                                                <i class="fa-solid fa-magnifying-glass"></i>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group full-width">
+                                            <label>REASON/SERVICE THAT PATIENT AVAIL</label>
+                                            <select id="consult-service" class="services-dropdown-list" required style="width: 100%;">
+                                                <option value="">- select -</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div style="display: flex; gap: 10px; margin-top: 20px;">
+                                        <button type="submit" class="btn-save" style="background-color: #c8d356; color: #3f4b00; padding: 10px 30px;">Save</button>
+                                        <button type="button" class="btn-back-grey" onclick="showSubView('consultation-tab', 'consultation-list-view')">Cancel</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MEDICAL SERVICES TAB -->
+                    <div id="services-tab" class="tab-content">
+                        <div class="panel-card">
+                            <div class="panel-header-row">
+                                <div>
+                                    <h2>Medical Services</h2>
+                                    <p id="services-counter-text">Showing 15 of 15</p>
+                                </div>
+                                <button class="add-btn" style="background:#dce475; color:#3f4b00;" onclick="viewAllServices()">View all service</button>
+                            </div>
+                            <div class="filter-bar">
+                                <div class="search-box">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <input type="text" id="service-search" placeholder="Searching..." onkeyup="filterServices()">
+                                </div>
+                                <span style="font-size: 11px; color: #7b8c8b;">Filter</span>
+                                <select class="filter-dropdown" id="service-type-filter" onchange="filterServices()">
+                                    <option value="">Services</option>
+                                    <option value="Laboratory">Laboratory</option>
+                                    <option value="Radiology">Radiology</option>
+                                </select>
+                                <select class="filter-dropdown" id="service-room-filter" onchange="filterServices()">
+                                    <option value="">Room number</option>
+                                    <option value="Room 101">Room 101</option>
+                                    <option value="Room 201">Room 201</option>
+                                </select>
+                            </div>
                             <table>
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Department</th>
-                                        <th>Date</th>
-                                        <th>Phone Number</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Eleyn</td>
-                                        <td>Cardiovascular</td>
-                                        <td>3 Mar, 2025</td>
-                                        <td>+0123456789</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Tine</td>
-                                        <td>Neurology</td>
-                                        <td>4 Mar, 2025</td>
-                                        <td>+0123456789</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Angelica</td>
-                                        <td>Gynaecology</td>
-                                        <td>5 Mar, 2025</td>
-                                        <td>+0123456789</td>
-                                    </tr>
-                                </tbody>
+                                <thead><tr><th>ID</th><th>Services</th><th>PRICE</th><th>Action</th></tr></thead>
+                                <tbody id="services-table-body"></tbody>
                             </table>
                         </div>
                     </div>
+
                 </div>
             </main>
         </div>
     </div>
-      <div class="logo-container">
-  <img src="acl.jpeg" alt="Accudetek Health & Diagnostics Logo" class="brand-logo">
-</div>
+
+    <!-- DATALISTS FOR AUTOCOMPLETE -->
+    <datalist id="doctors-datalist">
+        <option value="Dr. Ammar"></option>
+        <option value="Dr. Khan"></option>
+        <option value="Dr. Abdullah"></option>
+        <option value="Dr. Alia"></option>
+    </datalist>
+
+    <datalist id="nurses-datalist">
+        <option value="Richie"></option>
+        <option value="Breena"></option>
+        <option value="Alexie"></option>
+        <option value="Kit"></option>
+    </datalist>
+
     <script>
-        function ourServices() {
-            window.location.href = "https://accudetekhealthdiagnostics.com/services/";
+        let doctorsData = [
+            { id: 1, name: "Dr. Ammar", role: "Professors", specialty: "Radiologist", phone: "+0123456789", email: "ammar@gmail.com" },
+            { id: 2, name: "Dr. Khan", role: "Medical expert", specialty: "Medical Technologist", phone: "+0123456789", email: "khan@gmail.com" },
+            { id: 3, name: "Dr. Abdullah", role: "Communicator", specialty: "Neurology", phone: "+0123456789", email: "abdullah@gmail.com" },
+            { id: 4, name: "Dr. Alia", role: "Collaborator", specialty: "Family medicine", phone: "+0123456789", email: "ali@gmail.com" }
+        ];
+
+        let nursesData = [
+            { id: 1, name: "Richie", role: "Medication Admin", specialty: "Oncology nursing", phone: "+0123456789", email: "chiechie@gmail.com" },
+            { id: 2, name: "Breena", role: "Health collaboration", specialty: "Critical care nursing", phone: "+0123456789", email: "breenae@gmail.com" },
+            { id: 3, name: "Alexie", role: "Medical device", specialty: "Neonatal nurse", phone: "+0123456789", email: "lexie@gmail.com" },
+            { id: 4, name: "Kit", role: "Recording patient", specialty: "Cardiac nursing", phone: "+0123456789", email: "kitkat123@gmail.com" }
+        ];
+
+        let patientsData = [
+            { id: 1, fname: "Micaela", lname: "Jayan", name: "Micaela", phone: "+0123456789", email: "jayanmicaela@gmail.com", dob: "2007-08-06", gender: "Female", admit: true },
+            { id: 2, fname: "Haris", lname: "Khan", name: "Haris", phone: "+0123456789", email: "haris@gmail.com", dob: "1991-12-01", gender: "Male", admit: true },
+            { id: 3, fname: "Hamza", lname: "Ali", name: "Hamza", phone: "+0123456789", email: "hamza@gmail.com", dob: "2001-01-01", gender: "Male", admit: true }
+        ];
+
+        let servicesData = [
+            { id: 1, service: "Pregnancy Test (Serum)", price: "PHP 270.00" },
+            { id: 2, service: "Blood Urea Nitrogen", price: "PHP 150.00" },
+            { id: 3, service: "XRAY", price: "PHP 650.00" },
+            { id: 4, service: "Ultrasound", price: "PHP 1650.00" },
+            { id: 5, service: "Body Fluid Analysis (Package)", price: "PHP 1000.00" },
+            { id: 6, service: "Medical", price: "PHP 760" },
+            { id: 7, service: "OGCT Pregnant (100g, 75g)", price: "PHP 500.00" },
+            { id: 8, service: "Bloodtype and RH Typing", price: "PHP 280.00" },
+            { id: 9, service: "Alkaline Phosphates", price: "PHP 150.00" },
+            { id: 10, service: "Fecalysis", price: "PHP 270.00" },
+            { id: 11, service: "Cortisol", price: "PHP 1500.00" },
+            { id: 12, service: "ANA Screening", price: "PHP 1000.00" },
+            { id: 13, service: "Anti-HAV Screening", price: "PHP 1650.00" },
+            { id: 14, service: "Drug Test (Urine)", price: "PHP 250.00" },
+            { id: 15, service: "Medical Consultation", price: "PHP 760" }
+        ];
+
+        let consultationsCount = 4;
+
+        function ourServices() { window.location.href = "https://accudetekhealthdiagnostics.com/services/"; }
+        function bookAppointment() { window.location.href = "https://accudetekhealthdiagnostics.com/"; }
+        function viewAllServices() { window.location.href = "https://accudetekhealthdiagnostics.com/services/"; }
+
+        function populateServicesDropdowns() {
+            const dropdowns = document.querySelectorAll('.services-dropdown-list');
+            dropdowns.forEach(dd => {
+                dd.innerHTML = '<option value="">- select -</option>';
+                servicesData.forEach(s => {
+                    dd.innerHTML += `<option value="${s.service}">${s.service} (${s.price})</option>`;
+                });
+            });
         }
-        function bookAppointment() {
-            window.location.href = "https://accudetekhealthdiagnostics.com/";
-        }
+
         function signIn() {
-            var email = document.getElementById("email").value;
-            var password = document.getElementById("password").value;
+            var email = document.getElementById("email").value.trim();
+            var password = document.getElementById("password").value.trim();
 
-
-            if (email.trim() === "" || password.trim() === "") {
-                alert("Please enter your email and password.");
-            } else {
-                document.getElementById("login-page").style.display = "none";
-                document.getElementById("dashboard-page").style.display = "block";
+            if (!email || !password) {
+                alert("Notice: Please enter both your email and password.");
+                return;
             }
+
+            if (!email.includes("@")) {
+                alert("Notice: Invalid email address. Please make sure your email includes an '@' symbol.");
+                document.getElementById("email").focus();
+                return;
+            }
+
+            document.getElementById("login-page").style.display = "none";
+            document.getElementById("dashboard-page").style.display = "block";
+            renderDoctors();
+            renderNurses();
+            renderPatients();
+            renderServices();
+            populateServicesDropdowns();
+        }
+
+        function switchTab(tabId, btnElement) {
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active-tab'));
+            document.getElementById(tabId).classList.add('active-tab');
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            btnElement.classList.add('active');
+        }
+
+        function switchTabByNav(tabId) {
+            const btn = Array.from(document.querySelectorAll('.nav-btn')).find(b => b.getAttribute('onclick').includes(tabId));
+            if(btn) switchTab(tabId, btn);
+        }
+
+        function showSubView(tabParentId, subId) {
+            document.querySelectorAll(`#${tabParentId} .sub-view`).forEach(s => s.classList.remove('active-sub'));
+            document.getElementById(subId).classList.add('active-sub');
+        }
+
+        function saveConsultation() {
+            const name = document.getElementById("consult-name").value;
+            const service = document.getElementById("consult-service").value || "General Consultation";
+            consultationsCount++;
+
+            const tbody = document.getElementById("consultation-table-body");
+            const newRow = `
+                <tr>
+                    <td>${consultationsCount}</td>
+                    <td>${name.toUpperCase()}</td>
+                    <td>${service.toUpperCase()}</td>
+                    <td>
+                        <div class="action-icons">
+                            <i class="fa-solid fa-trash-can" onclick="deleteRow(this)" title="Delete"></i>
+                            <i class="fa-solid fa-pen-to-square" onclick="editGenericRow(this)" title="Edit"></i>
+                            <i class="fa-solid fa-eye" onclick="viewGenericRow(this)" title="View"></i>
+                        </div>
+                    </td>
+                </tr>`;
+            tbody.insertAdjacentHTML('afterbegin', newRow);
+            document.getElementById("consultation-counter-text").innerText = `Showing ${tbody.rows.length} of ${tbody.rows.length}`;
+            alert("Consultation added successfully!");
+            showSubView('consultation-tab', 'consultation-list-view');
+        }
+
+        function saveBilling() {
+            const patient = document.getElementById("bill-patient").value;
+            const serviceName = document.getElementById("bill-service").value || "General Service";
+            const paymentMethod = document.getElementById("bill-payment-method").value || "Cash";
+
+            const tbody = document.getElementById("billing-table-body");
+            const newRowHtml = `
+                <tr>
+                    <td>${patient}</td>
+                    <td>${serviceName}</td>
+                    <td><span class="badge badge-paid">${paymentMethod.toUpperCase()}</span></td>
+                    <td>PHP 500.00</td>
+                    <td>
+                        <div class="action-icons">
+                            <i class="fa-solid fa-trash-can" onclick="deleteRow(this)" title="Delete"></i>
+                            <i class="fa-solid fa-pen-to-square" onclick="editGenericRow(this)" title="Edit"></i>
+                            <i class="fa-solid fa-eye" onclick="viewGenericRow(this)" title="View"></i>
+                            <i class="fa-solid fa-mobile-screen" onclick="alert('Digital payment GCash/Maya initiated')" title="Digital Payment"></i>
+                        </div>
+                    </td>
+                </tr>`;
+            tbody.insertAdjacentHTML('afterbegin', newRowHtml);
+            alert("Billing entry created successfully!");
+            showSubView('billing-tab', 'billing-list-view');
+        }
+
+        function renderDoctors(data = doctorsData) {
+            const tbody = document.getElementById("doctors-table-body");
+            const dashBody = document.getElementById("dash-doctors-list");
+            tbody.innerHTML = ""; dashBody.innerHTML = "";
+
+            data.forEach(doc => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${doc.name}</td><td>${doc.role}</td><td>${doc.specialty}</td><td>${doc.phone}</td><td>${doc.email}</td>
+                        <td>
+                            <div class="action-icons">
+                                <i class="fa-solid fa-trash-can" onclick="deleteDoctor(${doc.id})" title="Delete"></i>
+                                <i class="fa-solid fa-pen-to-square" onclick="editDoctor(${doc.id})" title="Edit"></i>
+                                <i class="fa-solid fa-eye" onclick="viewDoctor(${doc.id})" title="View"></i>
+                            </div>
+                        </td>
+                    </tr>`;
+                dashBody.innerHTML += `<tr><td>${doc.name}</td><td>${doc.role}</td><td>${doc.specialty}</td></tr>`;
+            });
+            document.getElementById("doctors-counter-text").innerText = `Showing ${data.length} of ${doctorsData.length}`;
+            document.getElementById("doc-count").innerText = doctorsData.length;
+        }
+
+        function renderNurses(data = nursesData) {
+            const tbody = document.getElementById("nurse-table-body");
+            tbody.innerHTML = "";
+
+            data.forEach(n => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${n.name}</td><td>${n.role}</td><td>${n.specialty}</td><td>${n.phone}</td><td>${n.email}</td>
+                        <td>
+                            <div class="action-icons">
+                                <i class="fa-solid fa-trash-can" onclick="deleteNurse(${n.id})" title="Delete"></i>
+                                <i class="fa-solid fa-pen-to-square" onclick="editNurse(${n.id})" title="Edit"></i>
+                                <i class="fa-solid fa-eye" onclick="viewNurse(${n.id})" title="View"></i>
+                            </div>
+                        </td>
+                    </tr>`;
+            });
+            document.getElementById("nurse-counter-text").innerText = `Showing ${data.length} of ${nursesData.length}`;
+            document.getElementById("nurse-count").innerText = nursesData.length;
+        }
+
+        function renderPatients(data = patientsData) {
+            const tbody = document.getElementById("patients-table-body");
+            tbody.innerHTML = "";
+            data.forEach(p => {
+                tbody.innerHTML += `
+                    <tr onclick="showPatientDetails('${p.fname}', '${p.lname}', '${p.id}', '${p.email}', '${p.phone}', '${p.dob}', '${p.gender}')" style="cursor:pointer;">
+                        <td>${p.id}</td><td>${p.name}</td><td>${p.phone}</td><td>${p.email}</td><td>${p.dob}</td><td>${p.gender}</td>
+                        <td>
+                            <div class="action-icons" onclick="event.stopPropagation()">
+                                <i class="fa-solid fa-trash-can" onclick="deletePatient(${p.id})" title="Delete"></i>
+                                <i class="fa-solid fa-pen-to-square" onclick="editPatient(${p.id})" title="Edit"></i>
+                                <i class="fa-solid fa-eye" onclick="showPatientDetails('${p.fname}', '${p.lname}', '${p.id}', '${p.email}', '${p.phone}', '${p.dob}', '${p.gender}')" title="View"></i>
+                                ${p.admit ? '<span class="badge badge-admit">Admit</span>' : ''}
+                            </div>
+                        </td>
+                    </tr>`;
+            });
+            document.getElementById("patient-counter-text").innerText = `Showing ${data.length} of ${patientsData.length}`;
+            document.getElementById("patient-count").innerText = patientsData.length;
+        }
+
+        function renderServices(data = servicesData) {
+            const tbody = document.getElementById("services-table-body");
+            tbody.innerHTML = "";
+            data.forEach(s => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${s.id}</td><td>${s.service}</td><td>${s.price}</td>
+                        <td>
+                            <div class="action-icons">
+                                <i class="fa-solid fa-pen-to-square" onclick="editService(${s.id})" title="Edit"></i>
+                                <i class="fa-solid fa-eye" onclick="viewService(${s.id})" title="View"></i>
+                            </div>
+                        </td>
+                    </tr>`;
+            });
+            document.getElementById("services-counter-text").innerText = `Showing ${data.length} of ${servicesData.length}`;
+        }
+
+        function savePatient() {
+            const fname = document.getElementById("pat-firstname").value;
+            const lname = document.getElementById("pat-lastname").value;
+            const isAdmitted = document.getElementById("pat-admit-check").checked;
+            const dob = document.getElementById("pat-dob").value || "2000-01-01";
+            
+            patientsData.push({ 
+                id: patientsData.length + 1, 
+                fname: fname, 
+                lname: lname, 
+                name: fname, 
+                phone: document.getElementById("pat-phone").value, 
+                email: document.getElementById("pat-email").value, 
+                dob: dob, 
+                gender: document.getElementById("pat-gender").value || "Female", 
+                admit: isAdmitted 
+            });
+            
+            renderPatients();
+            alert("Patient record created successfully!");
+            showSubView('patients-tab', 'patients-list-view');
+        }
+
+        function filterServices() {
+            const q = document.getElementById("service-search").value.toLowerCase();
+            renderServices(servicesData.filter(s => s.service.toLowerCase().includes(q) || s.price.toLowerCase().includes(q)));
+        }
+
+        function editService(id) {
+            const item = servicesData.find(s => s.id === id);
+            const newPrice = prompt(`Edit price for ${item.service}:`, item.price);
+            if(newPrice) { item.price = newPrice; renderServices(); }
+        }
+
+        function viewService(id) {
+            const item = servicesData.find(s => s.id === id);
+            alert(`Medical Service Details:\nID: ${item.id}\nService: ${item.service}\nPrice: ${item.price}`);
+        }
+
+        function filterDoctors() {
+            const q = document.getElementById("doctor-search").value.toLowerCase();
+            const r = document.getElementById("doctor-role-filter").value;
+            const s = document.getElementById("doctor-spec-filter").value;
+            renderDoctors(doctorsData.filter(d => (d.name.toLowerCase().includes(q) || d.email.toLowerCase().includes(q)) && (!r || d.role === r) && (!s || d.specialty === s)));
+        }
+
+        function filterNurses() {
+            const q = document.getElementById("nurse-search").value.toLowerCase();
+            const r = document.getElementById("nurse-role-filter").value;
+            const s = document.getElementById("nurse-spec-filter").value;
+            renderNurses(nursesData.filter(n => (n.name.toLowerCase().includes(q) || n.email.toLowerCase().includes(q)) && (!r || n.role === r) && (!s || n.specialty === s)));
+        }
+
+        function filterPatients() {
+            const q = document.getElementById("patient-search").value.toLowerCase();
+            const id = document.getElementById("patient-id-filter").value;
+            const g = document.getElementById("patient-gender-filter").value;
+            renderPatients(patientsData.filter(p => (p.name.toLowerCase().includes(q) || p.email.toLowerCase().includes(q)) && (!id || p.id == id) && (!g || p.gender === g)));
+        }
+
+        function saveDoctor() {
+            const fname = document.getElementById("doc-firstname").value;
+            const lname = document.getElementById("doc-lastname").value;
+            doctorsData.push({ id: Date.now(), name: `Dr. ${fname} ${lname}`, role: document.getElementById("doc-role").value || "Physician", specialty: document.getElementById("doc-specialty").value || "General", phone: document.getElementById("doc-phone").value, email: document.getElementById("doc-email").value });
+            renderDoctors();
+            alert("Doctor added successfully!");
+            showSubView('doctors-tab', 'doctors-list-view');
+        }
+
+        function saveNurse() {
+            const fname = document.getElementById("nurse-firstname").value;
+            const lname = document.getElementById("nurse-lastname").value;
+            nursesData.push({ id: Date.now(), name: `${fname} ${lname}`, role: document.getElementById("nurse-role").value || "Nurse", specialty: document.getElementById("nurse-specialty").value || "General Care", phone: document.getElementById("nurse-phone").value, email: document.getElementById("nurse-email").value });
+            renderNurses();
+            alert("Nurse added successfully!");
+            showSubView('nurse-tab', 'nurse-list-view');
+        }
+
+        function toggleAdmitFields() {
+            const box = document.getElementById("admit-fields-box");
+            box.style.display = document.getElementById("pat-admit-check").checked ? "block" : "none";
+        }
+
+        function showPatientDetails(fname, lname, id, email, phone, dob, gender) {
+            document.getElementById("p-display-title").innerText = `${fname} ${lname}`.toUpperCase();
+            document.getElementById("p-id").innerText = id;
+            document.getElementById("p-fname").innerText = fname.toUpperCase();
+            document.getElementById("p-lname").innerText = lname.toUpperCase();
+            document.getElementById("p-email").innerText = email;
+            document.getElementById("p-phone").innerText = phone;
+            document.getElementById("p-dob").innerText = dob;
+            document.getElementById("p-gender").innerText = gender;
+            document.getElementById("patient-detail-card").scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function togglePayment(badge) {
+            if(badge.classList.contains('badge-pending')) {
+                badge.classList.remove('badge-pending');
+                badge.classList.add('badge-paid');
+                badge.innerText = 'PAID';
+            } else {
+                badge.classList.remove('badge-paid');
+                badge.classList.add('badge-pending');
+                badge.innerText = 'PENDING';
+            }
+        }
+
+        function deleteDoctor(id) {
+            if(confirm("Are you sure you want to delete this doctor?")) {
+                doctorsData = doctorsData.filter(d => d.id !== id);
+                renderDoctors();
+            }
+        }
+        function editDoctor(id) {
+            const doc = doctorsData.find(d => d.id === id);
+            const newName = prompt("Edit Doctor Name:", doc.name);
+            if(newName) { doc.name = newName; renderDoctors(); }
+        }
+        function viewDoctor(id) {
+            const doc = doctorsData.find(d => d.id === id);
+            alert(`Doctor Details:\nName: ${doc.name}\nRole: ${doc.role}\nSpecialty: ${doc.specialty}\nEmail: ${doc.email}`);
+        }
+
+        function deleteNurse(id) {
+            if(confirm("Are you sure you want to delete this nurse?")) {
+                nursesData = nursesData.filter(n => n.id !== id);
+                renderNurses();
+            }
+        }
+        function editNurse(id) {
+            const n = nursesData.find(item => item.id === id);
+            const newName = prompt("Edit Nurse Name:", n.name);
+            if(newName) { n.name = newName; renderNurses(); }
+        }
+        function viewNurse(id) {
+            const n = nursesData.find(item => item.id === id);
+            alert(`Nurse Details:\nName: ${n.name}\nRole: ${n.role}\nSpecialty: ${n.specialty}\nEmail: ${n.email}`);
+        }
+
+        function deletePatient(id) {
+            if(confirm("Are you sure you want to delete this patient?")) {
+                patientsData = patientsData.filter(p => p.id !== id);
+                renderPatients();
+            }
+        }
+        function editPatient(id) {
+            const p = patientsData.find(item => item.id === id);
+            const newName = prompt("Edit Patient First Name:", p.fname);
+            if(newName) { p.fname = newName; p.name = newName; renderPatients(); }
+        }
+
+        function deleteRow(btn) { 
+            if(confirm("Are you sure you want to delete this record?")) {
+                btn.closest("tr").remove(); 
+            }
+        }
+        function editGenericRow(btn) {
+            const row = btn.closest("tr");
+            const nameCell = row.cells[0] || row.cells[1];
+            const newVal = prompt("Edit record description:", nameCell.innerText);
+            if(newVal) { nameCell.innerText = newVal; alert("Record updated successfully!"); }
+        }
+        function viewGenericRow(btn) {
+            const row = btn.closest("tr");
+            alert("Viewing full details for row entry:\n" + row.innerText);
         }
     </script>
 </body>
