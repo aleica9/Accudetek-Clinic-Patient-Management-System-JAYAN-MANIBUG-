@@ -3,6 +3,7 @@
     <title>Accudetek Health & Diagnostics - Login & Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        
         * {
             box-sizing: border-box;
             margin: 0;
@@ -40,7 +41,8 @@
 
         .clinic-image {
             width: 100%;
-            height: 80%;
+            height: auto;
+            max-height: 400px;
             object-fit: cover;
             display: block;
         }
@@ -51,8 +53,10 @@
 
         .map {
             width: 100%;
-            height: 300px;
+            height: 220px;
             object-fit: cover;
+            border-radius: 4px;
+            margin-top: 10px;
             border: 1px solid #dcdcdc;
             display: block;
         }
@@ -66,7 +70,7 @@
         }
 
         .brand-logo {
-            max-width: 230px;
+            max-width: 220px;
             height: auto;
             display: block;
             margin: 0 auto 15px auto;
@@ -83,7 +87,7 @@
 
         .tagline {
             text-align: center;
-            font-size: 40px;
+            font-size: 22px;
             color: #10a6a6;
             margin-bottom: 20px;
         }
@@ -115,13 +119,13 @@
 
         .login-box {
             background-color: #8aa9a9;
-            padding: 30px;
-            margin-top: 50px;
+            padding: 20px;
+            margin-top: 20px;
             border-radius: 5px;
         }
 
         .login-box label {
-            font-size: 20px;
+            font-size: 13px;
             font-weight: bold;
             color: #003b36;
         }
@@ -284,6 +288,7 @@
             font-size: 20px;
             font-weight: bold;
         }
+
         .cards {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -650,11 +655,11 @@
 </head>
 <body>
 
-  
+    <!-- LOGIN PAGE CONTAINER -->
     <div id="login-page">
         <div class="login-wrapper">
             <div class="left">
-                <img src="docnurse.jpg" alt="Clinic Team" class="clinic-image">
+                <img src="3.jpeg.png" alt="Clinic Team" class="clinic-image">
                 <div class="map-section">
                     <p class="visit">You can visit our clinic here.</p>
                     <img src="maps.jpg" alt="Location Map" class="map">
@@ -662,7 +667,7 @@
             </div>
             <div class="right">
                 <div class="logo-image-container">
-                    <img src="logo-removebg-preview.png" alt="Accudetek Health & Diagnostics Logo" class="brand-logo">
+                    <img src="logo.png" alt="Accudetek Health & Diagnostics Logo" class="brand-logo">
                 </div>
                 <p class="tagline">PASYENTE ANG UNA.<br><b>MAAGAP NA RESULTA.</b></p>
                 <div class="buttons">
@@ -706,12 +711,12 @@
         </footer>
     </div>
 
-  
+    <!-- DASHBOARD PAGE CONTAINER -->
     <div id="dashboard-page" class="dashboard-container">
         <div class="app">
             <aside class="sidebar">
                 <div class="brand">
-                    <img src="logo-removebg-preview.png" alt="Accudetek Health & Diagnostics" class="sidebar-logo">
+                    <img src="logo.png" alt="Accudetek Health & Diagnostics" class="sidebar-logo">
                 </div>
                 <nav class="nav-menu">
                     <button class="nav-btn active" onclick="switchTab('dashboard-tab', this)"><i class="fa-solid fa-border-all"></i> Dashboard</button>
@@ -777,10 +782,8 @@
                                 <div class="panel-header">New admitted patient</div>
                                 <table>
                                     <thead><tr><th>Name</th><th>Department</th><th>Date</th></tr></thead>
-                                    <tbody>
-                                        <tr><td>Eleyn</td><td>Cardiovascular</td><td>3 Mar, 2025</td></tr>
-                                        <tr><td>Tine</td><td>Neurology</td><td>4 Mar, 2025</td></tr>
-                                        <tr><td>Angelica</td><td>Gynaecology</td><td>5 Mar, 2025</td></tr>
+                                    <tbody id="dash-patients-list">
+                                        <!-- Dynamically updated -->
                                     </tbody>
                                 </table>
                             </div>
@@ -1050,7 +1053,7 @@
                                             </div>
 
                                             <div class="form-group full-width">
-                                                <label>Medical Services</label>
+                                                <label>Medical Services / Department</label>
                                                 <select id="pat-service" class="services-dropdown-list">
                                                     <option value="">- select -</option>
                                                 </select>
@@ -1368,9 +1371,9 @@
         ];
 
         let patientsData = [
-            { id: 1, fname: "Micaela", lname: "Jayan", name: "Micaela", phone: "+0123456789", email: "jayanmicaela@gmail.com", dob: "2007-08-06", gender: "Female", admit: true },
-            { id: 2, fname: "Haris", lname: "Khan", name: "Haris", phone: "+0123456789", email: "haris@gmail.com", dob: "1991-12-01", gender: "Male", admit: true },
-            { id: 3, fname: "Hamza", lname: "Ali", name: "Hamza", phone: "+0123456789", email: "hamza@gmail.com", dob: "2001-01-01", gender: "Male", admit: true }
+            { id: 1, fname: "Eleyn", lname: "Santos", name: "Eleyn", phone: "+0123456789", email: "eleyn@gmail.com", dob: "2000-03-03", gender: "Female", admit: true, department: "Cardiovascular", date: "3 Mar, 2025" },
+            { id: 2, fname: "Tine", lname: "Reyes", name: "Tine", phone: "+0123456789", email: "tine@gmail.com", dob: "1998-04-04", gender: "Female", admit: true, department: "Neurology", date: "4 Mar, 2025" },
+            { id: 3, fname: "Angelica", lname: "Cruz", name: "Angelica", phone: "+0123456789", email: "angelica@gmail.com", dob: "1995-05-05", gender: "Female", admit: true, department: "Gynaecology", date: "5 Mar, 2025" }
         ];
 
         let servicesData = [
@@ -1545,7 +1548,10 @@
 
         function renderPatients(data = patientsData) {
             const tbody = document.getElementById("patients-table-body");
+            const dashPatientsBody = document.getElementById("dash-patients-list");
             tbody.innerHTML = "";
+            dashPatientsBody.innerHTML = "";
+
             data.forEach(p => {
                 tbody.innerHTML += `
                     <tr onclick="showPatientDetails('${p.fname}', '${p.lname}', '${p.id}', '${p.email}', '${p.phone}', '${p.dob}', '${p.gender}')" style="cursor:pointer;">
@@ -1559,7 +1565,18 @@
                             </div>
                         </td>
                     </tr>`;
+
+                // Add to dashboard admitted patients table
+                if(p.admit) {
+                    dashPatientsBody.innerHTML += `
+                        <tr>
+                            <td>${p.name}</td>
+                            <td>${p.department || 'General Care'}</td>
+                            <td>${p.date || 'Today'}</td>
+                        </tr>`;
+                }
             });
+
             document.getElementById("patient-counter-text").innerText = `Showing ${data.length} of ${patientsData.length}`;
             document.getElementById("patient-count").innerText = patientsData.length;
         }
@@ -1587,6 +1604,7 @@
             const lname = document.getElementById("pat-lastname").value;
             const isAdmitted = document.getElementById("pat-admit-check").checked;
             const dob = document.getElementById("pat-dob").value || "2000-01-01";
+            const serviceVal = document.getElementById("pat-service").value || "General Ward";
             
             patientsData.push({ 
                 id: patientsData.length + 1, 
@@ -1597,11 +1615,13 @@
                 email: document.getElementById("pat-email").value, 
                 dob: dob, 
                 gender: document.getElementById("pat-gender").value || "Female", 
-                admit: isAdmitted 
+                admit: isAdmitted,
+                department: serviceVal.split('(')[0].trim(),
+                date: new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
             });
             
             renderPatients();
-            alert("Patient record created successfully!");
+            alert("Patient record created successfully and added to the Dashboard!");
             showSubView('patients-tab', 'patients-list-view');
         }
 
